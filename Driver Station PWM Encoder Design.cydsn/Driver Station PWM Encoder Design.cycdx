@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="Button_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LCD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="LCDPort" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
+  <block name="CLK_1MHZ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="isr_Capture" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_Z_In" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_Y_In" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_X_In" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Timer" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TimerUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="Timer_COUNTER" address="0x40006504" bitWidth="16" desc="UDB.A0 - Current Down Counter Value" hidden="false" />
+    <register name="Timer_PERIOD" address="0x40006524" bitWidth="16" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="Timer_Control_Reg" address="0x40006575" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the Timer" />
+      <field name="CTRL_CMODE" from="6" to="5" access="RW" resetVal="" desc="Capture Mode" />
+      <field name="CTRL_TEN" from="4" to="4" access="RW" resetVal="" desc="Trigger Enable Bit" />
+      <field name="CTRL_TMODE" from="3" to="2" access="RW" resetVal="" desc="Trigger Mode" />
+      <field name="CTRL_IC" from="1" to="0" access="RW" resetVal="" desc="Interrupt Count" />
+    </register>
+    <register name="Timer_STATUS_MASK" address="0x40006585" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+      <field name="TIMER_STS_TC" from="0" to="0" access="R" resetVal="" desc="Enables the Interrupt on TC" />
+      <field name="TIMER_STS_CAPT" from="1" to="1" access="R" resetVal="" desc="Enables the Interrupt on Capture" />
+      <field name="TIMER_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="FIFO Full Status " />
+      <field name="TIMER_STS_FIFO_NEMPTY" from="3" to="3" access="R" resetVal="" desc="FIFO Empty status " />
+    </register>
+    <register name="Timer_STATUS_AUX_CTRL" address="0x40006595" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="">
+        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
+        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
+      </field>
+      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="E_CNT_START0" value="0" desc="Disable counter" />
+        <value name="E_CNT_START1" value="1" desc="Enable counter" />
+      </field>
+    </register>
+  </block>
+  <block name="Button_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Thumb_Button" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="USBFS_1" BASE="0x0" SIZE="0x0" desc="USBFS" visible="true" hidden="false">
+    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ep_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Dp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Dm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="dp_int" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="sof_int" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ord_int" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="USB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ep_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="bus_reset" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="arb_int" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Clock_vbus" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="USBFS_1_PM_USB_CR0" address="0x40004394" bitWidth="8" desc="USB Power Mode Control Register 0" hidden="false">
+      <field name="fsusbio_ref_en" from="0" to="0" access="RW" resetVal="" desc="" />
+      <field name="fsusbio_pd_n" from="1" to="1" access="RW" resetVal="" desc="" />
+      <field name="fsusbio_pd_pullup_n" from="2" to="2" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_PM_ACT_CFG" address="0x400043A5" bitWidth="8" desc="Active Power Mode Configuration Register" hidden="false" />
+    <register name="USBFS_1_PM_STBY_CFG" address="0x400043B5" bitWidth="8" desc="Standby Power Mode Configuration Register" hidden="false" />
+    <register name="USBFS_1_PRT.PS" address="0x400051F1" bitWidth="8" desc="Port Pin State Register" hidden="false">
+      <field name="PinState_DP" from="6" to="6" access="R" resetVal="" desc="" />
+      <field name="PinState_DM" from="7" to="7" access="R" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_PRT_DM0" address="0x400051F2" bitWidth="8" desc="Port Drive Mode Register" hidden="false">
+      <field name="DriveMode_DP" from="6" to="6" access="RW" resetVal="" desc="" />
+      <field name="DriveMode_DM" from="7" to="7" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_PRT_DM1" address="0x400051F3" bitWidth="8" desc="Port Drive Mode Register" hidden="false">
+      <field name="PullUp_en_DP" from="6" to="6" access="RW" resetVal="" desc="" />
+      <field name="PullUp_en_DM" from="7" to="7" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_PRT.INP_DIS" address="0x400051F8" bitWidth="8" desc="Input buffer disable override" hidden="false">
+      <field name="seinput_dis_dp" from="6" to="6" access="RW" resetVal="" desc="" />
+      <field name="seinput_dis_dm" from="7" to="7" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_EP0_DR0" address="0x40006000" bitWidth="8" desc="bmRequestType" hidden="false" />
+    <register name="USBFS_1_EP0_DR1" address="0x40006001" bitWidth="8" desc="bRequest" hidden="false" />
+    <register name="USBFS_1_EP0_DR2" address="0x40006002" bitWidth="8" desc="wValueLo" hidden="false" />
+    <register name="USBFS_1_EP0_DR3" address="0x40006003" bitWidth="8" desc="wValueHi" hidden="false" />
+    <register name="USBFS_1_EP0_DR4" address="0x40006004" bitWidth="8" desc="wIndexLo" hidden="false" />
+    <register name="USBFS_1_EP0_DR5" address="0x40006005" bitWidth="8" desc="wIndexHi" hidden="false" />
+    <register name="USBFS_1_EP0_DR6" address="0x40006006" bitWidth="8" desc="lengthLo" hidden="false" />
+    <register name="USBFS_1_EP0_DR7" address="0x40006007" bitWidth="8" desc="lengthHi" hidden="false" />
+    <register name="USBFS_1_CR0" address="0x40006008" bitWidth="8" desc="USB Control Register 0" hidden="false">
+      <field name="device_address" from="6" to="0" access="R" resetVal="" desc="" />
+      <field name="usb_enable" from="7" to="7" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_CR1" address="0x40006009" bitWidth="8" desc="USB Control Register 1" hidden="false">
+      <field name="reg_enable" from="0" to="0" access="RW" resetVal="" desc="" />
+      <field name="enable_lock" from="1" to="1" access="RW" resetVal="" desc="" />
+      <field name="bus_activity" from="2" to="2" access="RW" resetVal="" desc="" />
+      <field name="trim_offset_msb" from="3" to="3" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_SIE_EP1_CR0" address="0x4000600E" bitWidth="8" desc="The Endpoint1 Control Register" hidden="false" />
+    <register name="USBFS_1_USBIO_CR0" address="0x40006010" bitWidth="8" desc="USBIO Control Register 0" hidden="false">
+      <field name="rd" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="td" from="5" to="5" access="RW" resetVal="" desc="" />
+      <field name="tse0" from="6" to="6" access="RW" resetVal="" desc="" />
+      <field name="ten" from="7" to="7" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_USBIO_CR1" address="0x40006012" bitWidth="8" desc="USBIO Control Register 1" hidden="false">
+      <field name="dmo" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="dpo" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="usbpuen" from="2" to="2" access="RW" resetVal="" desc="" />
+      <field name="iomode" from="5" to="5" access="RW" resetVal="" desc="" />
+    </register>
+    <register name="USBFS_1_SIE_EP2_CR0" address="0x4000601E" bitWidth="8" desc="The Endpoint2 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP3_CR0" address="0x4000602E" bitWidth="8" desc="The Endpoint3 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP4_CR0" address="0x4000603E" bitWidth="8" desc="The Endpoint4 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP5_CR0" address="0x4000604E" bitWidth="8" desc="The Endpoint5 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP6_CR0" address="0x4000605E" bitWidth="8" desc="The Endpoint6 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP7_CR0" address="0x4000606E" bitWidth="8" desc="The Endpoint7 Control Register" hidden="false" />
+    <register name="USBFS_1_SIE_EP8_CR0" address="0x4000607E" bitWidth="8" desc="The Endpoint8 Control Register" hidden="false" />
+    <register name="USBFS_1_BUF_SIZE" address="0x4000608C" bitWidth="8" desc="Dedicated Endpoint Buffer Size Register" hidden="false" />
+    <register name="USBFS_1_EP_ACTIVE" address="0x4000608E" bitWidth="8" desc="Endpoint Active Indication Register" hidden="false" />
+    <register name="USBFS_1_EP_TYPE" address="0x4000608F" bitWidth="8" desc="Endpoint Type (IN/OUT) Indication" hidden="false" />
+    <register name="USBFS_1_USB_CLK_EN" address="0x4000609D" bitWidth="8" desc="USB Block Clock Enable Register" hidden="false" />
+  </block>
+  <block name="Button_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Button_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+</blockRegMap>
